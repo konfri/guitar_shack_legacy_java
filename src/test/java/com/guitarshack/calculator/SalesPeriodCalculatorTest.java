@@ -44,8 +44,8 @@ class SalesPeriodCalculatorTest {
         // THEN
         SalesPeriod expected = SalesPeriod.builder()
                 .productId(productId)
-                .startDate(LocalDate.parse("2020-11-24"))
-                .endDate(LocalDate.parse("2020-12-24"))
+                .startDate(LocalDate.parse("2019-11-24"))
+                .endDate(LocalDate.parse("2019-12-24"))
                 .build();
         assertThat(result).isEqualTo(expected);
     }

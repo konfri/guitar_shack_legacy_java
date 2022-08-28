@@ -46,7 +46,7 @@ public class ReorderMonitorServiceEndToEndIT {
                 }""")));
 
 
-        stubFor(WireMock.get("/default/sales?productId=1&startDate=11/24/2020&endDate=12/24/2020&action=total&").willReturn(ok("""
+        stubFor(WireMock.get("/default/sales?productId=1&startDate=11/24/2019&endDate=12/24/2019&action=total&").willReturn(ok("""
                 {
                     "total": 1
                 }""")));

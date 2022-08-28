@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
 @Component
@@ -19,11 +20,11 @@ public class SalesPeriodCalculator {
 
     public SalesPeriod calculateSalesInput(ProductId productId) {
 
-        Instant now = timeProvider.now();
-
         ZoneOffset zone = ZoneOffset.UTC;
-        LocalDate start = LocalDate.ofInstant(now.minus(30, ChronoUnit.DAYS), zone);
-        LocalDate end = LocalDate.ofInstant(now, zone);
+        Instant endAsInstant = ZonedDateTime.ofInstant(timeProvider.now(), zone).minusYears(1).toInstant();
+
+        LocalDate start = LocalDate.ofInstant(endAsInstant.minus(30, ChronoUnit.DAYS), zone);
+        LocalDate end = LocalDate.ofInstant(endAsInstant, zone);
 
         return SalesPeriod.builder()
                 .productId(productId)
